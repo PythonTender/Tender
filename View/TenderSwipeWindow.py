@@ -15,7 +15,7 @@ class TenderSwipeWindow(BoxLayout):
     def _init_widget(self):
 
         user = User('talm', '123', 'Tal', 'Malul', 'beer-sheva')
-        post = Post(1, user, 'Mazda3', 2006, 'black', 100, 'd:\\documents\\users\\talmalu\\Downloads\\dragon.jpeg',
+        post = Post(1, user, 'Mazda3', 2006, 'black', 100, 'resources/images.jpeg',
                     40000, 'good')
 
 
