@@ -1,6 +1,10 @@
+from kivy.uix.gridlayout import GridLayout
 
 from View.TenderSwipeWindow import TenderSwipeWindow
 from kivy.app import App
+
+class Login(GridLayout):
+    pass
 
 
 class TenderApp(App):
@@ -8,9 +12,7 @@ class TenderApp(App):
         App.__init__(self)
 
     def build(self):
-        return TenderSwipeWindow()
-
-
+        return Login()
 
 tender = TenderApp()
 

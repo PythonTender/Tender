@@ -1,0 +1,28 @@
+<Login>:
+    username: username
+    password: password
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Username:"
+
+            TextInput:
+                id: username
+
+            Label:
+                text: "Password:"
+
+            TextInput:
+                id: password
+
+        Button:
+            text: "Login"
+
+        Button:
+            text: "Register"
