@@ -1,6 +1,6 @@
-from Controller.Controllers import *
-
-from View.TenderSwipeWindow import TenderSwipeWindow
+from Controller.Login import Login
+from Controller.PostView import PostView
+from Controller.ProfileViewWidget import ProfileViewWidget
 from kivy.app import App
 
 class TenderApp(App):
@@ -8,7 +8,7 @@ class TenderApp(App):
         App.__init__(self)
 
     def build(self):
-        return Login()
+        return PostView()
 
 tender = TenderApp()
 

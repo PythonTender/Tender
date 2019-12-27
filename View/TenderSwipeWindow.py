@@ -1,4 +1,3 @@
-
 from View.ProfileViewWidget import ProfileViewWidget
 from DataObjects.Post import Post
 from DataObjects.User import User
