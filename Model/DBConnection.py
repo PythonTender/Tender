@@ -1,14 +1,22 @@
 import sqlite3
 
-class db :
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
+
+class DBConnection(metaclass=Singleton):
     def __init__(self):
-        self.conn = sqlite3.connect('lite.db')
+        super(DBConnection,self).__init__()
+        self.conn = sqlite3.connect('resources/TenderDB.db')
         self.cur = self.conn.cursor()
         self.id = 1
 
     def createUser(self, username, firstname, lastname, password, location):
-        self.cur.execute("INSERT INTO users VALUES (?,?,?,?,?);",username,firstname,lastname,password,location)
+        self.cur.execute("INSERT INTO users VALUES (?,?,?,?,?);",username,password,firstname,lastname,location)
         self.conn.commit()
 
     def loginUser(self, username, password):
@@ -26,7 +34,7 @@ class db :
         return self.cur.fetchall()
 
     def allPosts(self):
-        self.cur.execute("SELECT * From posts;")
+        self.cur.execute("SELECT * From Posts;")
         return self.cur.fetchall()
 
     # 1 for like, 0 for dislike

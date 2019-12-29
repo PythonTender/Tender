@@ -1,0 +1,25 @@
+#:include View/profile_view_widget.kv
+
+<PostView@AnchorLayout>:
+    orientation: 'vertical'
+    size: root.width,root.height
+    pv_front: pv_front
+    pv_back: pv_back
+
+    AnchorLayout:
+        #padding: [100,0,100,100]
+
+        ProfileViewWidget:
+            id: pv_back
+
+        ProfileViewWidget:
+            id: pv_front
+            canvas.before:
+                PushMatrix
+                Translate:
+                    y: root.y_translate
+                Rotate:
+                    angle: root.rotate
+                    origin: root.width/2,0
+            canvas.after:
+                PopMatrix
