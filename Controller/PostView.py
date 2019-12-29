@@ -28,20 +28,21 @@ class PostView(AnchorLayout):
     def on_touch_move(self, touch):
         self.rotate += -math.asin(touch.dx / self.height) * (180 / math.pi)
         self.y_translate += touch.dy
-        if touch.x >= self.width or touch.x <= 0:
-            print("out")
-        if self.rotate > 25 or self.rotate < -25:
-            print("out")
+        if len(self.Posts) > 0 and (touch.x >= self.width-5 or touch.x <= 5):
+            self.dispatch('on_touch_up', touch)
 
     def on_touch_up(self, touch):
-        if self.rotate > 25 or self.rotate < -25:
-            print("out")
+        if len(self.Posts) > 0 and (self.rotate > 15 or self.rotate < -15):
+            p = self.Posts.pop(0)
+            self.model.post_preference(p, self.rotate)
         self.y_translate = 0.
         self.rotate = 0.
 
     def refresh(self,instance, value):
-        self.pv_front.Post = self.Posts[0]
-        self.pv_back.Post = self.Posts[1]
+        if len(self.Posts) > 0:
+            self.pv_front.Post = self.Posts[0]
+            if len(self.Posts) > 1:
+                self.pv_back.Post = self.Posts[1]
 
     def set_posts(self, posts):
         self.Posts = posts

@@ -26,8 +26,12 @@ class DBModel:
 
             im = CoreImage(io.BytesIO(p_image), ext="jpg")
 
-            p = Post(p_id,p_seller,p_model,p_year,p_color,p_distance_driven,im,p_price,p_description)
+            p = Post(p_id, p_seller, p_model, p_year, p_color, p_distance_driven, im, p_price, p_description)
             posts.append(p)
 
         return posts
 
+    def update_wish_list(self, post, is_wished):
+        pass
+        #if (is_wished):
+        #   self.tender_db.likePost(postid=post.id)

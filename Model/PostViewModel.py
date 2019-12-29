@@ -1,9 +1,8 @@
-from Model import DBModel
-
 class PostViewModel:
 
     def __init__(self,data_model):
         self.data_model = data_model
+        self.post_view = None
 
     def refresh_post_view(self,dt=0):
         if not self.post_view:
@@ -16,4 +15,7 @@ class PostViewModel:
 
     def set_view(self,view=None):
         self.post_view = view
+
+    def post_preference(self,post,direction):
+        self.data_model.update_wish_list(post.id,direction < 0)
 

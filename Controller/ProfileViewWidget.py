@@ -1,5 +1,6 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
+from kivy.uix.image import Image
 
 
 class ProfileViewWidget(BoxLayout):
@@ -15,3 +16,4 @@ class ProfileViewWidget(BoxLayout):
     def refresh(self,instance, value):
         self.image.texture = self.Post.image.texture
         self.lb_model_year.text = '[b]' + str(self.Post.model) + '[/b]' + ', [size=22]' + str(self.Post.year) + '[/size]'
+

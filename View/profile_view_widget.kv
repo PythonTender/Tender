@@ -11,24 +11,22 @@
             size: self.size
 
 
-    BoxLayout:
+    FloatLayout:
         size_hint: 1,0.5
         Image:
-            border: 30,30,30,30
-            id: image
             canvas.before:
+                Color:
+                    rgba: 0.5, 0.5, 0.5, 1
+                Line:
+                    width: 1
+                    rectangle: self.x+30, self.y, self.width-60, self.height
                 Color:
                     rgba: 0,0,0,0.1
                 Rectangle:
                     size: self.size
                     pos: self.x+5,self.y-10
-            canvas:
-                Color:
-                    rgb: (1, 1, 1)
-                Rectangle:
-                    texture: self.texture
-                    size: self.size
-                    pos: self.pos
+            pos_hint: {'y': 0, 'x': 0}
+            id: image
 
     AnchorLayout:
         size_hint: 1,0.5
