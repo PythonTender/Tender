@@ -10,7 +10,6 @@ class Post:
         self._price = price
         self._description = description
 
-
     @property
     def id(self):
         return self._id;

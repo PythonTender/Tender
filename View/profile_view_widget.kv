@@ -1,3 +1,5 @@
+#:import ImageButton Controller.ImageButton
+
 <ProfileViewWidget@BoxLayout>:
 
     image: image
@@ -10,10 +12,9 @@
             pos: self.pos
             size: self.size
 
-
     FloatLayout:
         size_hint: 1,0.5
-        Image:
+        ImageButton:
             canvas.before:
                 Color:
                     rgba: 0.5, 0.5, 0.5, 1
@@ -27,6 +28,7 @@
                     pos: self.x+5,self.y-10
             pos_hint: {'y': 0, 'x': 0}
             id: image
+            on_press: root.open_popup()
 
     AnchorLayout:
         size_hint: 1,0.5

@@ -1,0 +1,59 @@
+<PostDetailedView@Popup>:
+
+    image: image
+    lb_model_year: lb_model_year
+    lb_color_distance_price: lb_color_distance_price
+    lb_description: lb_description
+    on_touch_down: root.dismiss()
+
+    BoxLayout:
+        orientation: 'vertical'
+        FloatLayout:
+            size_hint: 1,0.5
+            ImageButton:
+                canvas.before:
+                    Color:
+                        rgba: 0.5, 0.5, 0.5, 1
+                    Line:
+                        width: 1
+                        rectangle: self.x+30, self.y, self.width-60, self.height
+                    Color:
+                        rgba: 0,0,0,0.1
+                    Rectangle:
+                        size: self.size
+                        pos: self.x+5,self.y-10
+                pos_hint: {'y': 0, 'x': 0}
+                id: image
+
+        AnchorLayout:
+            size_hint: 1,0.5
+            anchor_x: 'left'
+            anchor_y: 'top'
+            padding: [60,20,0,0]
+            Label:
+                color: (0,0,0)
+                id: lb_model_year
+                size: self.texture_size
+                text_size: self.size
+                size_hint: (1,0.1)
+                font_name: 'Gotham Rounded'
+                font_size: 24
+                markup: True
+            Label:
+                color: (0,0,0)
+                id: lb_color_distance_price
+                size: self.texture_size
+                text_size: self.size
+                size_hint: (1,0.2)
+                font_name: 'Gotham Rounded'
+                font_size: 24
+                markup: True
+            Label:
+                color: (0,0,0)
+                id: lb_description
+                size: self.texture_size
+                text_size: self.size
+                size_hint: (1,0.9)
+                font_name: 'Gotham Rounded'
+                font_size: 24
+                markup: True
