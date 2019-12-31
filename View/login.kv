@@ -36,4 +36,6 @@
         Button:
 
             text: "Register"
-            on_press: app.root.current = "register_screen"
+            on_press:
+                app.root.current = "register_screen"
+                root.manager.transition.direction = "right"

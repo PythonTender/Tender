@@ -8,6 +8,7 @@ import io
 class DBModel:
     def __init__(self):
         self.tender_db = DBConnection()
+        self.userConnected = None
 
     def get_user_relevant_post(self):
         rs = self.tender_db.allPosts()
