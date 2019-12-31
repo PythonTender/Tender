@@ -1,4 +1,6 @@
-<Login>:
+<Login@Screen>:
+    name: 'login_screen'
+
     username: username
     password: password
 
@@ -29,7 +31,9 @@
         Button:
 
             text: "Login"
+            # on_press: app.root.current = "postview_screen" if self.validateUser() else "login_screen"
 
         Button:
 
             text: "Register"
+            on_press: app.root.current = "register_screen"

@@ -1,6 +1,8 @@
 #:include View/profile_view_widget.kv
 
-<PostView@AnchorLayout>:
+<PostView@AnchorLayout, Screen>:
+    name: 'postview_screen'
+
     orientation: 'vertical'
     size: root.width,root.height
     pv_front: pv_front
