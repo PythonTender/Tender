@@ -1,5 +1,6 @@
 from Controller.PostView import PostView
-from Controller.WishList import RecycleWishlist
+from Controller.WishListView import RecycleWishlist
+from Controller.WishList import WishList
 from Model.PostViewModel import PostViewModel
 from Model.DBModel import DBModel
 from kivy.app import App
@@ -17,7 +18,7 @@ class TenderApp(App):
 
     def build(self):
         #return PostView(model=PostViewModel(DBModel()))
-        return RecycleWishlist(model=WishListModel(DBModel()))
+        return WishList(model=WishListModel(DBModel()))
         # return RecycleWishlist()
 
 Config.set('graphics', 'width', '400')

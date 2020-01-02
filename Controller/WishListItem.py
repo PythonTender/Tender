@@ -4,7 +4,6 @@ from Controller import PostDetailedView
 from kivy.uix.popup import Popup
 
 
-
 class WishListItem(BoxLayout):
     image = ObjectProperty(None)
     lb_model_year = ObjectProperty(None)

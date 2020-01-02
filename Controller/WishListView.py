@@ -6,25 +6,16 @@ from kivy.uix.recycleview import RecycleView
 from kivy.properties import ObjectProperty
 from kivy.properties import ListProperty
 from Controller.WishListItem import WishListItem
-from Controller.WishListView import RecycleWishlist
 from kivy.clock import Clock
 # from kivy.uix.screenmanager import Screen
 from DataObjects.Post import Post
 
-Builder.load_file('View/wishlist.kv')
+#Builder.load_file('View/wishlist_view.kv')
 
-
-class WishList(BoxLayout):
-
-    lv = ObjectProperty(None)
-    Posts = ListProperty([])
+class RecycleWishlist(RecycleView):
 
     def __init__(self, **kwargs):
-        super(WishList, self).__init__()
-        self.model = kwargs.get('model',None)
-        self.model.set_view(self)
-        self.bind(Posts=self.refresh)
-        Clock.schedule_once(self._init_post_view)
+        super(RecycleWishlist, self).__init__(**kwargs)
 
     def btnPressed(self, numPressed):
         print ("Pressed " + str(numPressed))
@@ -35,19 +26,10 @@ class WishList(BoxLayout):
         #     label.id = post.id
         #     self.add_widget(label)
 
-    def refresh(self,instance, value):
-        self.lv.data.clear()
-        self.lv.data = [{'Post': x} for x in self.Posts]
-
-    def set_posts(self, posts):
-        self.Posts = posts
-
-    def _init_post_view(self,dt=0):
-        self.model.refresh_post_view()
 
 class MyApp(App):
     def build(self):
-        return WishList()
+        return RecycleWishlist()
 
 if __name__ == "__main__":
     MyApp().run()

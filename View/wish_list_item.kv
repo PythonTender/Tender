@@ -1,7 +1,7 @@
 #:import ImageButton Controller.ImageButton
 
 <WishListItem@BoxLayout>:
-    size_hint: 1,1
+
     image: image
     lb_model_year: lb_model_year
     orientation: 'horizontal'
@@ -13,7 +13,7 @@
             size: self.size
 
     FloatLayout:
-        size_hint: 1,1
+        size_hint: 0.5,1
         ImageButton:
             canvas.before:
                 Color:
@@ -31,9 +31,10 @@
             on_press: root.open_popup()
 
     AnchorLayout:
-        size_hint: 1,1
+        size_hint: 0.5,1
         anchor_x: 'left'
         anchor_y: 'top'
+        padding: [60,20,0,0]
         Label:
             color: (0,0,0)
             id: lb_model_year
