@@ -36,3 +36,12 @@ class DBModel:
         pass
         #if (is_wished):
         #   self.tender_db.likePost(postid=post.id)
+
+    def loginUser(self, username, password):
+        if self.tender_db.loginUser(username, password):
+            self.userConnected = username
+            return True
+        return False
+
+    def createUser(self, username, firstname, lastname, password, location):
+        return self.tender_db.createUser(username, firstname, lastname, password, location)

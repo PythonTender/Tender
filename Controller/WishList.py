@@ -1,23 +1,29 @@
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import ObjectProperty
-from kivy.uix.button import Button
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.label import Label
+from kivy.uix.recycleboxlayout import RecycleBoxLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.recycleview import RecycleView
-from kivy.uix.widget import Widget
-
+from kivy.properties import ObjectProperty
+from kivy.properties import ListProperty
+from Controller.WishListItem import WishListItem
+from kivy.clock import Clock
+# from kivy.uix.screenmanager import Screen
 from DataObjects.Post import Post
 
+Builder.load_file('View/wishList.kv')
 
-posts = []
-posts.append(Post("1", "admin", "BMW", "2010", "Blue", "110,000", "BLOB", "550", "New car available!"))
+
 
 class RecycleWishlist(RecycleView):
 
+    Posts = ListProperty([])
+
     def __init__(self, **kwargs):
-        super(RecycleWishlist, self).__init__(**kwargs)
-        self.data = [{'text': str(x), 'on_press': self.btnPressed(x)} for x in range (20)]
+        super(RecycleWishlist, self).__init__()
+        self.model = kwargs.get('model',None)
+        self.model.set_view(self)
+        self.bind(Posts=self.refresh)
+        Clock.schedule_once(self._init_post_view)
 
     def btnPressed(self, numPressed):
         print ("Pressed " + str(numPressed))
@@ -28,6 +34,15 @@ class RecycleWishlist(RecycleView):
         #     label.id = post.id
         #     self.add_widget(label)
 
+    def refresh(self,instance, value):
+        self.data.clear()
+        self.data = [{'Post': x} for x in self.Posts]
+
+    def set_posts(self, posts):
+        self.Posts = posts
+
+    def _init_post_view(self,dt=0):
+        self.model.refresh_post_view()
 
 class MyApp(App):
     def build(self):

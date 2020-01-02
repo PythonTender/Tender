@@ -49,7 +49,7 @@
             text: "Register"
             on_release:
                 self.register
-                app.root.current = "login_screen"
+                app.root.current = "login_screen" if self.register() else "register_screen"
                 root.manager.transition.direction = "left"
 
         Button:

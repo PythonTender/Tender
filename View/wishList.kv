@@ -1,7 +1,8 @@
-<RecycleWishlist>:
-    viewclass: 'Button'
+
+#:include View/wish_list_item.kv
+
+<RecycleWishlist@RecycleView>:
 
     RecycleBoxLayout:
-        size_hint_y : None
-        height: self.minimum_height
+        viewclass: 'WishListItem'
         orientation: 'vertical'

@@ -10,9 +10,11 @@ class Login(GridLayout):
     username = ObjectProperty(None)
     password = ObjectProperty(None)
 
+    def __init__(self, **kwargs):
+        self.model = kwargs.get('model',None)
+        self.model.set_view(self)
+
     def validateUser(self):
-        if DBModel.tender_db.loginUser(self.username.text, self.password) is not None:
-            db = DBConnection()
-            db.userConnected = self.username.text
+        if self.model.loginUser(self.username.text, self.password) is not None:
             return True
         return False

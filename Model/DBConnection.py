@@ -16,8 +16,12 @@ class DBConnection(metaclass=Singleton):
         self.id = 1
 
     def createUser(self, username, firstname, lastname, password, location):
-        self.cur.execute("INSERT INTO users VALUES (?,?,?,?,?);",username,password,firstname,lastname,location)
-        self.conn.commit()
+        try:
+            self.cur.execute("INSERT INTO users VALUES (?,?,?,?,?);",username,password,firstname,lastname,location)
+            self.conn.commit()
+        except Exception as e:
+            return False
+        return True
 
     def loginUser(self, username, password):
         self.cur.execute("SELECT * from users WHERE username=? AND password=?;",username, password)

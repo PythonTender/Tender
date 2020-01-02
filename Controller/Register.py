@@ -9,8 +9,11 @@ class Register:
     lastName= ObjectProperty(None)
     location= ObjectProperty(None)
 
+    def __init__(self, **kwargs):
+        super(Register, self).__init__()
+        self.model = kwargs.get('model', None)
+        self.model.set_view(self)
+
     def register(self):
-        db = DBConnection()
-        db.createUser(self.username.text, self.password.text, self.firstName.text, self.lastName.text, self.location.text)
-        return True
+        return self.model.createUser(self.username.text, self.password.text, self.firstName.text, self.lastName.text, self.location.text)
 
