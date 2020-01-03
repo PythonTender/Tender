@@ -1,0 +1,30 @@
+<MenuBar>:
+    rows: 2
+
+    BoxLayout:
+        size_hint_y: None
+        height: 30
+        spacing: 10
+
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            width: 30
+            size_hint_x: None
+            background_normal: 'posts_icon.png'
+            on_press:
+                app.root.current = 'postview_screen'
+                root.manager.transition.direction = 'left'
+
+        Button:
+            width: 30
+            size_hint_x: None
+            background_normal: 'wishlist_icon.png'
+            on_press:
+                app.root.current = 'wishlist_screen'
+                root.manager.transition.direction = 'right'
