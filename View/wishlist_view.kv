@@ -3,7 +3,12 @@
 
 <RecycleWishlist@RecycleView>:
 
+    size_hint: 1,1
+    pos_hint: {'center': 1}
+
     RecycleBoxLayout:
-        size_hint: 1,1
         viewclass: 'WishListItem'
         orientation: 'vertical'
+        default_size: root.width,None
+
+

@@ -12,6 +12,7 @@ from DataObjects.Post import Post
 
 #Builder.load_file('View/wishlist_view.kv')
 
+
 class RecycleWishlist(RecycleView):
 
     def __init__(self, **kwargs):

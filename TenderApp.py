@@ -24,9 +24,9 @@ class TenderApp(App):
 
 
     def build(self):
-        # return PostView(model=PostViewModel(DBModel()))
+         return PostView(model=PostViewModel(DBModel()))
         # return WishList(model=WishListModel(DBModel()))
-        return RecycleWishlist()
+        #return WishList(model=WishListModel(DBModel()))
         # return MenuBar()
 
 Config.set('graphics', 'width', '400')

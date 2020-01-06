@@ -1,4 +1,5 @@
 from kivy.uix.boxlayout import BoxLayout
+from kivy.app import App
 from kivy.properties import ObjectProperty
 from Controller import PostDetailedView
 from kivy.uix.popup import Popup
