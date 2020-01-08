@@ -1,4 +1,5 @@
 from kivy.lang import Builder
+from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 
@@ -11,7 +12,11 @@ from kivy.app import App
 from kivy.config import Config
 from kivy.core.text import LabelBase
 
-from Controller import Login, Register, PostView, WishList
+from Controller.Login import Login
+from Controller.Register import Register
+from Controller.PostView import PostView
+from Controller.WishList import WishList
+
 
 from Model.WishListModel import WishListModel
 
@@ -19,18 +24,26 @@ LabelBase.register(name='Gotham Rounded',fn_regular='resources/fonts/Gotham Roun
 
 Builder.load_file('View/screenmanager.kv')
 
-
 class ScreenLogin(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super(ScreenLogin, self).__init__(**kwargs)
+        self.add_widget(Login(model=DBModel()))
 
 class ScreenRegister(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super(ScreenRegister, self).__init__(**kwargs)
+        self.add_widget(Register(model=DBModel()))
 
 class ScreenPostView(Screen):
-    pass
+    def __init__(self,**kwargs):
+        super(ScreenPostView,self).__init__(**kwargs)
+        self.add_widget(PostView(model=PostViewModel(DBModel())))
+
 
 class ScreenWishList(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super(ScreenWishList, self).__init__(**kwargs)
+        self.add_widget(WishList(model=WishListModel(DBModel())))
 
 screen_manager = ScreenManager()
 screen_manager.add_widget(ScreenLogin(name="login_screen"))
@@ -44,10 +57,6 @@ class TenderApp(App):
 
 
     def build(self):
-        # return PostView(model=PostViewModel(DBModel()))
-        # return WishList(model=WishListModel(DBModel()))
-        # return WishList(model=WishListModel(DBModel()))
-        # return MenuBar()
         return screen_manager
 
 Config.set('graphics', 'width', '400')

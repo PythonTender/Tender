@@ -5,6 +5,7 @@
     image: image
     lb_model_year: lb_model_year
     orientation: 'horizontal'
+    spacing: 5
     canvas:
         Color:
             rgb: (249/256,249/256,249/256)
@@ -15,26 +16,27 @@
     FloatLayout:
         size_hint: 0.5,1
         ImageButton:
+            size_hint: 0.8,1
+            pos_hint: {'x':0.0, 'center_y': 0.5}
+            id: image
             canvas.before:
                 Color:
                     rgba: 0.5, 0.5, 0.5, 1
                 Line:
-                    width: 1
-                    rectangle: self.x+30, self.y, self.width-60, self.height
+                    width: 2
+                    rectangle: self.center_x - (self.norm_image_size[0] / 2),self.center_y - (self.norm_image_size[1] / 2), self.norm_image_size[0], self.norm_image_size[1]
                 Color:
                     rgba: 0,0,0,0.1
                 Rectangle:
-                    size: self.size
-                    pos: self.x+5,self.y-10
-            pos_hint: {'y': 0, 'x': 0}
-            id: image
-            on_press: root.open_popup()
+                    size: self.norm_image_size[0], self.norm_image_size[1]
+                    pos: self.center_x - (self.norm_image_size[0] / 2),self.center_y - (self.norm_image_size[1] / 2)
+            on_release: root.open_popup()
 
     AnchorLayout:
-        size_hint: 0.5,1
+        size_hint: 1,0.5
+        pos_hint: {'x':0.1, 'y': 0}
         anchor_x: 'left'
         anchor_y: 'top'
-        padding: [60,20,0,0]
         Label:
             color: (0,0,0)
             id: lb_model_year

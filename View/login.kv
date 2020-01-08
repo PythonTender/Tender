@@ -2,39 +2,38 @@
 
     username: username
     password: password
+    cols: 1
 
-    GridLayout:
-        cols: 1
-        size: root.width, root.height
-        padding: 200,200,200,200
+    size: root.width, root.height
+    padding: 200,200,200,200
 
-        Label:
-            text: "Tender"
-            color: 1,0,0,0.8
-            font_size: '30sp'
-            margin: 0,0,50,50
-            bold: True
+    Label:
+        text: "Tender"
+        color: 1,0,0,0.8
+        font_size: '30sp'
+        margin: 0,0,50,50
+        bold: True
 
-        TextInput:
-            id: username
-            hint_text: "Username"
-            multiline: False
+    TextInput:
+        id: username
+        hint_text: "Username"
+        multiline: False
 
-        TextInput:
-            id: password
-            hint_text: "Password"
-            multiline: False
-            password: True
+    TextInput:
+        id: password
+        hint_text: "Password"
+        multiline: False
+        password: True
 
 
-        Button:
+    Button:
 
-            text: "Login"
-            on_press: app.root.current = "postview_screen" if self.validateUser() else "login_screen"
+        text: "Login"
+        on_press: app.root.current = "postview_screen" if self.validateUser() else "login_screen"
 
-        Button:
+    Button:
 
-            text: "Register"
-            on_press:
-                app.root.current = "register_screen"
-                root.manager.transition.direction = "right"
+        text: "Register"
+        on_press:
+            app.root.current = "register_screen"
+            app.root.transition.direction = "right"

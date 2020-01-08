@@ -11,8 +11,8 @@ class Login(GridLayout):
     password = ObjectProperty(None)
 
     def __init__(self, **kwargs):
+        super(Login, self).__init__()
         self.model = kwargs.get('model',None)
-        self.model.set_view(self)
 
     def validateUser(self):
         if self.model.loginUser(self.username.text, self.password) is not None:

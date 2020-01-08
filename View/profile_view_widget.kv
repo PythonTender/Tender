@@ -19,7 +19,7 @@
         ImageButton:
             size_hint: 0.8,1
             pos_hint: {'center_x':0.5, 'center_y': 0.5}
-            color:1,1,0.3,0.5
+            id: image
             canvas.before:
                 Color:
                     rgba: 0.5, 0.5, 0.5, 1
@@ -31,7 +31,6 @@
                 Rectangle:
                     size: self.norm_image_size[0], self.norm_image_size[1]
                     pos: root.center_x - (self.norm_image_size[0] / 2),self.center_y - (self.norm_image_size[1] / 2)
-            id: image
             on_release: root.open_popup()
 
     AnchorLayout:
