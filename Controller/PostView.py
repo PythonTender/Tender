@@ -3,15 +3,15 @@ from kivy.lang import Builder
 from kivy.properties import NumericProperty
 from kivy.properties import ObjectProperty
 from kivy.properties import ListProperty
+from kivy.uix.screenmanager import Screen
+
+from Controller import MenuBar
 from Controller.ProfileViewWidget import ProfileViewWidget
 from kivy.clock import Clock
 import math
 
 
-Builder.load_file('View/PostView.kv')
-
-
-class PostView(AnchorLayout):
+class PostView(AnchorLayout, Screen):
     rotate = NumericProperty(0.)
     pv_front = ObjectProperty()
     pv_back = ObjectProperty()

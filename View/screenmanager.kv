@@ -1,18 +1,17 @@
-#: include PostView.kv
-#: include login.kv
-#: include Register.kv
-#: include wishList.kv
+#: include View/PostView.kv
+#: include View/login.kv
+#: include View/Register.kv
+#: include View/wishlist.kv
 
-ScreenManager:
-    transition: NoTransision()
 
-    Screen:
-        name: "start_screen"
-
+<ScreenLogin>:
     Login:
 
+<ScreenRegister>:
     Register:
 
+<ScreenPostView>:
     PostView:
 
-    RecycleWishlist:
+<ScreenWishList>:
+    WishList:
