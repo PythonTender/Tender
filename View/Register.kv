@@ -8,7 +8,8 @@
     cols: 1
 
     size: root.width, root.height
-    padding: 200,200,200,200
+    padding: 200,150,200,150
+    spacing: 2
 
     Label:
         text: "Tender"
@@ -18,42 +19,60 @@
         bold: True
 
     TextInput:
-        id: firstName
-        hint_text: "First Name"
-        multiline: False
-
-    TextInput:
-        id: lastName
-        hint_text: "Last Name"
-        multiline: False
-
-    TextInput:
-        id: location
-        hint_text: "Location"
-        multiline: False
-
-    TextInput:
         id: username
         hint_text: "Username"
         multiline: False
+        write_tab: False
 
     TextInput:
         id: password
         hint_text: "Password"
         multiline: False
         password: True
+        write_tab: False
+
+    TextInput:
+        id: firstName
+        hint_text: "First Name"
+        multiline: False
+        write_tab: False
+
+    TextInput:
+        id: lastName
+        hint_text: "Last Name"
+        multiline: False
+        write_tab: False
+
+    TextInput:
+        id: location
+        hint_text: "Location"
+        multiline: False
+        write_tab: False
 
     Button:
         text: "Register"
         on_release:
-            self.register()
-            app.root.current = "login_screen" if self.register() else "register_screen"
+
+            app.root.current = "login_screen" if root.register() else "register_screen"
             app.root.transition.direction = "right"
+
+            firstName.text = ""
+            lastName.text = ""
+            location.text = ""
+            username.text = ""
+            password.text = ""
 
     Button:
         text: "Go back"
         on_release:
+
             app.root.current = "login_screen"
             app.root.transition.direction = "left"
+
+            firstName.text = ""
+            lastName.text = ""
+            location.text = ""
+            username.text = ""
+            password.text = ""
 
 

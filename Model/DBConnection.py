@@ -10,14 +10,15 @@ class Singleton(type):
 
 class DBConnection(metaclass=Singleton):
     def __init__(self):
-        super(DBConnection,self).__init__()
+        super(DBConnection, self).__init__()
         self.conn = sqlite3.connect('resources/TenderDB.db')
         self.cur = self.conn.cursor()
         self.id = 1
 
-    def createUser(self, username, firstname, lastname, password, location):
+    def createUser(self, username, password, firstname, lastname, location):
         try:
-            self.cur.execute("INSERT INTO users VALUES (?,?,?,?,?);", (username,password,firstname,lastname,location))
+            self.cur.execute("INSERT INTO users VALUES (?,?,?,?,?);", (username,
+                                                                       password, firstname, lastname, location))
             self.conn.commit()
         except Exception as e:
             return False
@@ -26,10 +27,11 @@ class DBConnection(metaclass=Singleton):
     def loginUser(self, username, password):
         self.cur.execute("SELECT * from users WHERE username=? AND password=?;", (username, password))
         res = self.cur.fetchall()
-        return res is not None
+        return len(res)>0
 
     def createPost(self, seller, model, year, color, distance_driven, image, price, description ):
-        self.cur.execute("INSERT INTO posts VALUES (?,?,?,?,?,?,?,?,?);", (self.id, seller, model, year, color, distance_driven, image, price, description))
+        self.cur.execute("INSERT INTO posts VALUES (?,?,?,?,?,?,?,?,?);", (self.id, seller, model, year, color,
+                                                                           distance_driven, image, price, description))
         self.conn.commit()
         self.id += 1
 

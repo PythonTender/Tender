@@ -18,18 +18,24 @@
         id: username
         hint_text: "Username"
         multiline: False
+        write_tab: False
 
     TextInput:
         id: password
         hint_text: "Password"
         multiline: False
         password: True
+        write_tab: False
 
 
     Button:
 
         text: "Login"
-        on_press: app.root.current = "postview_screen" if root.validateUser() else "login_screen"
+        on_press:
+            app.root.current = "postview_screen" if root.validateUser() else "login_screen"
+
+            username.text = ""
+            password.text = ""
 
     Button:
 
@@ -37,3 +43,6 @@
         on_press:
             app.root.current = "register_screen"
             app.root.transition.direction = "right"
+
+            username.text = ""
+            password.text = ""

@@ -15,6 +15,10 @@ class Login(GridLayout):
         self.model = kwargs.get('model',None)
 
     def validateUser(self):
-        if self.model.loginUser(self.username.text, self.password.text) is not None:
+        if self.model.loginUser(self.username.text, self.password.text):
             return True
         return False
+
+    def onKeyDown(self, instance, keyboard, keycode, text, modifiers):
+        if self.test3.focus and keycode == 40:  # 40 - Enter key pressed
+            self.validateUser()

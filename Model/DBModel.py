@@ -43,5 +43,5 @@ class DBModel:
             return True
         return False
 
-    def createUser(self, username, firstname, lastname, password, location):
-        return self.tender_db.createUser(username, firstname, lastname, password, location)
+    def createUser(self, username, password, firstname, lastname, location):
+        return self.tender_db.createUser(username, password, firstname, lastname, location)
