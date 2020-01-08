@@ -29,7 +29,7 @@
     Button:
 
         text: "Login"
-        on_press: app.root.current = "postview_screen" if self.validateUser() else "login_screen"
+        on_press: app.root.current = "postview_screen" if root.validateUser() else "login_screen"
 
     Button:
 

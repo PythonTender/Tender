@@ -11,7 +11,6 @@ from kivy.clock import Clock
 # from kivy.uix.screenmanager import Screen
 from DataObjects.Post import Post
 
-Builder.load_file('View/wishlist.kv')
 
 
 class WishList(BoxLayout):

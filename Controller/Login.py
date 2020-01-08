@@ -15,6 +15,6 @@ class Login(GridLayout):
         self.model = kwargs.get('model',None)
 
     def validateUser(self):
-        if self.model.loginUser(self.username.text, self.password) is not None:
+        if self.model.loginUser(self.username.text, self.password.text) is not None:
             return True
         return False
