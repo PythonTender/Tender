@@ -24,15 +24,6 @@ class WishList(BoxLayout):
         self.model.set_view(self)
         self.bind(Posts=self.refresh)
 
-    def btnPressed(self, numPressed):
-        print ("Pressed " + str(numPressed))
-
-
-        # for post in postsLiked:
-        #     label = Label(text = post.model + " ," + post.color + " - " + post.price +"$")
-        #     label.id = post.id
-        #     self.add_widget(label)
-
     def refresh(self,instance, value):
         self.lv.data.clear()
         self.lv.data = [{'Post': x} for x in self.Posts]

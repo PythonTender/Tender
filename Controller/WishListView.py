@@ -18,15 +18,6 @@ class RecycleWishlist(RecycleView):
     def __init__(self, **kwargs):
         super(RecycleWishlist, self).__init__(**kwargs)
 
-    def btnPressed(self, numPressed):
-        print ("Pressed " + str(numPressed))
-
-
-        # for post in postsLiked:
-        #     label = Label(text = post.model + " ," + post.color + " - " + post.price +"$")
-        #     label.id = post.id
-        #     self.add_widget(label)
-
 
 class MyApp(App):
     def build(self):
