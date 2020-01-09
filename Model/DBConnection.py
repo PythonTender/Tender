@@ -35,9 +35,17 @@ class DBConnection(metaclass=Singleton):
         self.cur.execute("SELECT * From posts WHERE id=?;",(id))
         return self.cur.fetchall()
 
-    def allPosts(self):
+    def allPosts(self, username):
         self.cur.execute("SELECT * From Posts;")
-        return self.cur.fetchall()
+        tempResults = self.cur.fetchall()
+        self.cur.execute("SELECT POSTID From Preferences WHERE username =?;", (username))
+        toRemove = self.cur.fetchall()
+        for entry in toRemove:
+            for i in range(len(tempResults)):
+                if entry[0] == tempResults[i][0]:
+                    tempResults.pop(i)
+                    break
+        return tempResults
 
     # 1 for like, 0 for dislike
     def likePost(self,postid):
