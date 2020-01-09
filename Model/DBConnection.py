@@ -3,6 +3,7 @@ from Model.Singletone import  Singleton
 from Model.UserModel import UserModel
 from DataObjects.User import User
 
+#Our db connection is a singleton because there's only one connection at a time
 class DBConnection(metaclass=Singleton):
     def __init__(self):
         super(DBConnection, self).__init__()
