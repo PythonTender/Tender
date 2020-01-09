@@ -3,16 +3,24 @@
     username: username
     password: password
     cols: 1
+    rows: 5
+    spacing: 5
+    canvas.before:
+        Color:
+            rgba: (254/255,60/255,114/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
     size: root.width, root.height
-    padding: 200,200,200,200
+    padding: 75,100,75,100
 
     Label:
         text: "Tender"
-        color: 1,0,0,0.8
+        color: 0.95,0.95,0.95,1
         font_size: '30sp'
-        margin: 0,0,50,50
         bold: True
+        font_name: 'Gotham Rounded'
 
     TextInput:
         id: username
@@ -28,21 +36,76 @@
         write_tab: False
 
 
-    Button:
-
-        text: "Login"
-        on_press:
+    RoundedButton:
+        text: "[color=FAA1AF]" + "Login" + "[/color]"
+        markup: True
+        on_release:
             app.root.current = "postview_screen" if root.validateUser() else "login_screen"
-
             username.text = ""
             password.text = ""
 
-    Button:
-
-        text: "Register"
-        on_press:
+    RoundedButton:
+        text: "[color=FAA1AF]" + "Register" + "[/color]"
+        markup: True
+        on_release:
             app.root.current = "register_screen"
             app.root.transition.direction = "right"
-
             username.text = ""
             password.text = ""
+
+
+<RoundedStrokeButton@Button>:
+    background_color: 0,0,0,0
+    background_image: ''
+    back_color: (1,1,1,1)
+    _rect_color: (0,0,0,0)
+    _stroke_color: self.back_color
+    color: self.back_color
+    border_radius: 18
+
+    canvas.before:
+        Color:
+            rgba: self.back_color if self._stroke_color is None else self._stroke_color
+        Line:
+            rounded_rectangle: (self.pos[0],self.pos[1],self.size[0],self.size[1],self.border_radius)
+            width: 1.2
+        Color:
+            rgba: self.back_color if self._rect_color is None else self._rect_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [self.border_radius]
+    on_press:
+        self._stroke_color = (0,0,0,0)
+        self._rect_color = self.back_color
+    on_release:
+        self._stroke_color = self.back_color
+        self._rect_color = (0,0,0,0)
+
+<RoundedButton@Button>:
+    background_color: 0,0,0,0
+    background_image: ''
+    back_color: (0.95,0.95,0.95,1)
+    _rect_color: self.back_color
+    _stroke_color: (0,0,0,0)
+    color: self.back_color
+    border_radius: 18
+
+    canvas.before:
+        Color:
+            rgba: self.back_color if self._stroke_color is None else self._stroke_color
+        Line:
+            rounded_rectangle: (self.pos[0],self.pos[1],self.size[0],self.size[1],self.border_radius)
+            width: 1.2
+        Color:
+            rgba: self.back_color if self._rect_color is None else self._rect_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [self.border_radius]
+    on_press:
+        self._stroke_color = self.back_color
+        self._rect_color = (0,0,0,0)
+    on_release:
+        self._stroke_color = (0,0,0,0)
+        self._rect_color = self.back_color

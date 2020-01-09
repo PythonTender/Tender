@@ -20,6 +20,8 @@ from Controller.WishList import WishList
 
 from Model.WishListModel import WishListModel
 
+
+
 LabelBase.register(name='Gotham Rounded',fn_regular='resources/fonts/Gotham Rounded Light.otf',fn_bold='resources/fonts/Gotham Rounded Bold.otf')
 
 Builder.load_file('View/screenmanager.kv')
@@ -45,6 +47,9 @@ class ScreenWishList(Screen):
         super(ScreenWishList, self).__init__(**kwargs)
         self.add_widget(WishList(model=WishListModel(DBModel())))
 
+Config.set('graphics', 'width', '400')
+Config.set('graphics', 'height', '600')
+
 screen_manager = ScreenManager()
 screen_manager.add_widget(ScreenLogin(name="login_screen"))
 screen_manager.add_widget(ScreenRegister(name="register_screen"))
@@ -59,8 +64,7 @@ class TenderApp(App):
     def build(self):
         return screen_manager
 
-Config.set('graphics', 'width', '400')
-Config.set('graphics', 'height', '600')
+
 
 tender = TenderApp()
 

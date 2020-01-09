@@ -1,6 +1,5 @@
 from kivy.properties import ObjectProperty
 from kivy.uix.gridlayout import GridLayout
-
 from Model import DBModel
 from Model.DBConnection import DBConnection
 
