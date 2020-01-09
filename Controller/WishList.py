@@ -23,7 +23,6 @@ class WishList(BoxLayout):
         self.model = kwargs.get('model',None)
         self.model.set_view(self)
         self.bind(Posts=self.refresh)
-        Clock.schedule_once(self._init_post_view)
 
     def btnPressed(self, numPressed):
         print ("Pressed " + str(numPressed))

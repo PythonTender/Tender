@@ -1,4 +1,5 @@
 from kivy.lang import Builder
+from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
@@ -37,15 +38,22 @@ class ScreenRegister(Screen):
         self.add_widget(Register(model=DBModel()))
 
 class ScreenPostView(Screen):
+    postview = ObjectProperty(None)
     def __init__(self,**kwargs):
         super(ScreenPostView,self).__init__(**kwargs)
-        self.add_widget(PostView(model=PostViewModel(DBModel())))
-
+        self.postview = PostView(model=PostViewModel(DBModel()))
+        self.add_widget(self.postview)
+    def on_pre_enter(self, *args):
+        self.postview._init_post_view()
 
 class ScreenWishList(Screen):
+    wishlist = ObjectProperty(None)
     def __init__(self, **kwargs):
         super(ScreenWishList, self).__init__(**kwargs)
-        self.add_widget(WishList(model=WishListModel(DBModel())))
+        self.wishlist = WishList(model=WishListModel(DBModel()))
+        self.add_widget(self.wishlist)
+    def on_pre_enter(self, *args):
+        self.wishlist._init_post_view()
 
 Config.set('graphics', 'width', '400')
 Config.set('graphics', 'height', '600')

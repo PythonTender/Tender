@@ -11,7 +11,7 @@ class WishListModel:
         self.post_view.set_posts(self._get_user_relevant_posts())
 
     def _get_user_relevant_posts(self):
-        return self.data_model.get_user_relevant_post()
+        return self.data_model.get_user_relevant_wl_post()
 
     def set_view(self,view=None):
         self.post_view = view

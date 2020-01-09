@@ -23,7 +23,6 @@ class PostView(AnchorLayout, Screen):
         self.model = kwargs.get('model',None)
         self.model.set_view(self)
         self.bind(Posts=self.refresh)
-        Clock.schedule_once(self._init_post_view)
 
     def on_touch_move(self, touch):
         self.rotate += -math.asin(touch.dx / self.height) * (180 / math.pi)

@@ -8,6 +8,7 @@ class PostViewModel:
         if not self.post_view:
             raise Exception('post_view is set to None')
 
+        print(self._get_user_relevant_posts())
         self.post_view.set_posts(self._get_user_relevant_posts())
 
     def _get_user_relevant_posts(self):
@@ -17,5 +18,5 @@ class PostViewModel:
         self.post_view = view
 
     def post_preference(self,post,direction):
-        self.data_model.update_wish_list(post.id,direction < 0)
+        self.data_model.update_wish_list(post,direction < 0)
 
