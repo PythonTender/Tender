@@ -1,5 +1,6 @@
-<Login>:
+#:include View/themes/Buttons/roundedbutton.kv
 
+<Login>:
     username: username
     password: password
     cols: 1
@@ -53,59 +54,3 @@
             username.text = ""
             password.text = ""
 
-
-<RoundedStrokeButton@Button>:
-    background_color: 0,0,0,0
-    background_image: ''
-    back_color: (1,1,1,1)
-    _rect_color: (0,0,0,0)
-    _stroke_color: self.back_color
-    color: self.back_color
-    border_radius: 18
-
-    canvas.before:
-        Color:
-            rgba: self.back_color if self._stroke_color is None else self._stroke_color
-        Line:
-            rounded_rectangle: (self.pos[0],self.pos[1],self.size[0],self.size[1],self.border_radius)
-            width: 1.2
-        Color:
-            rgba: self.back_color if self._rect_color is None else self._rect_color
-        RoundedRectangle:
-            pos: self.pos
-            size: self.size
-            radius: [self.border_radius]
-    on_press:
-        self._stroke_color = (0,0,0,0)
-        self._rect_color = self.back_color
-    on_release:
-        self._stroke_color = self.back_color
-        self._rect_color = (0,0,0,0)
-
-<RoundedButton@Button>:
-    background_color: 0,0,0,0
-    background_image: ''
-    back_color: (0.95,0.95,0.95,1)
-    _rect_color: self.back_color
-    _stroke_color: (0,0,0,0)
-    color: self.back_color
-    border_radius: 18
-
-    canvas.before:
-        Color:
-            rgba: self.back_color if self._stroke_color is None else self._stroke_color
-        Line:
-            rounded_rectangle: (self.pos[0],self.pos[1],self.size[0],self.size[1],self.border_radius)
-            width: 1.2
-        Color:
-            rgba: self.back_color if self._rect_color is None else self._rect_color
-        RoundedRectangle:
-            pos: self.pos
-            size: self.size
-            radius: [self.border_radius]
-    on_press:
-        self._stroke_color = self.back_color
-        self._rect_color = (0,0,0,0)
-    on_release:
-        self._stroke_color = (0,0,0,0)
-        self._rect_color = self.back_color
