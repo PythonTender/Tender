@@ -57,5 +57,5 @@ class DBConnection(metaclass=Singleton):
         self.conn.commit()
 
     def viewLiked(self):
-        self.cur.execute("SELECT * FROM Preferences WHERE Preference = ? AND username = ?;", (1 , UserModel().user.username))
+        self.cur.execute("SELECT * FROM Posts INNER JOIN Preferences on Posts.POSTID = Preferences.POSTID WHERE Preference = ? AND username = ?;", (1 , UserModel().user.username))
         return self.cur.fetchall()
