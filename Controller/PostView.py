@@ -10,7 +10,7 @@ from Controller.ProfileViewWidget import ProfileViewWidget
 from kivy.clock import Clock
 import math
 
-
+#Postview class
 class PostView(AnchorLayout, Screen):
     rotate = NumericProperty(0.)
     pv_front = ObjectProperty()
@@ -21,9 +21,12 @@ class PostView(AnchorLayout, Screen):
     def __init__(self, **kwargs):
         super(PostView, self).__init__()
         self.model = kwargs.get('model',None)
+        #We bind the view and the model
         self.model.set_view(self)
+        #We want to keep our posts updating - bind it to the clock
         self.bind(Posts=self.refresh)
 
+    #move functions incharge of drag and such
     def on_touch_move(self, touch):
         self.rotate += -math.asin(touch.dx / self.height) * (180 / math.pi)
         self.y_translate += touch.dy
@@ -37,6 +40,7 @@ class PostView(AnchorLayout, Screen):
         self.y_translate = 0.
         self.rotate = 0.
 
+    #Refresh the posts
     def refresh(self,instance, value):
         if len(self.Posts) > 0:
             self.pv_front.Post = self.Posts[0]

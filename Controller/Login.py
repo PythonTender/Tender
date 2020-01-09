@@ -3,7 +3,7 @@ from kivy.uix.gridlayout import GridLayout
 from Model import DBModel
 from Model.DBConnection import DBConnection
 
-
+#A simple login class
 class Login(GridLayout):
 
     username = ObjectProperty(None)
