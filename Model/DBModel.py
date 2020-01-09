@@ -1,6 +1,7 @@
 from Model.DBConnection import DBConnection
 from DataObjects.Post import Post
 from kivy.core.image import Image as CoreImage
+from Model.UserModel import UserModel
 from kivy.uix.image import Image
 from DataObjects.User import User
 import io
@@ -11,7 +12,7 @@ class DBModel:
         self.userConnected = None
 
     def get_user_relevant_post(self):
-        rs = self.tender_db.allPosts()
+        rs = self.tender_db.allPosts(UserModel().user.username)
         posts = []
 
         for record in rs:
