@@ -32,13 +32,13 @@ class DBConnection(metaclass=Singleton):
         self.conn.commit()
 
     def readPost(self, id):
-        self.cur.execute("SELECT * From posts WHERE id=?;",(id))
+        self.cur.execute("SELECT * From posts WHERE id=?;",(id,))
         return self.cur.fetchall()
 
     def allPosts(self, username):
         self.cur.execute("SELECT * From Posts;")
         tempResults = self.cur.fetchall()
-        self.cur.execute("SELECT POSTID From Preferences WHERE username =?;", (username))
+        self.cur.execute("SELECT POSTID From Preferences WHERE username =?;", (username,))
         toRemove = self.cur.fetchall()
         for entry in toRemove:
             for i in range(len(tempResults)):
@@ -57,5 +57,5 @@ class DBConnection(metaclass=Singleton):
         self.conn.commit()
 
     def viewLiked(self):
-        self.cur.execute("SELECT * FROM Preferences WHERE Preference = ? AND username = ?;", (1 , UserModel().user.username))
+        self.cur.execute("SELECT * FROM Posts INNER JOIN Preferences on Posts.POSTID = Preferences.POSTID WHERE Preference = ? AND username = ?;", (1 , UserModel().user.username))
         return self.cur.fetchall()
