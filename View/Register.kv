@@ -1,3 +1,4 @@
+#:include View/themes/Buttons/roundedbutton.kv
 <Register>:
 
     username: username
@@ -6,6 +7,15 @@
     lastName: lastName
     location: location
     cols: 1
+    rows: 8
+    spacing: 5
+
+    canvas.before:
+        Color:
+            rgba: (254/255,60/255,114/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
     size: root.width, root.height
     padding: 75,100,75,100
@@ -13,10 +23,10 @@
 
     Label:
         text: "Tender"
-        color: 1,0,0,0.8
+        color: 0.95,0.95,0.95,1
         font_size: '30sp'
-        margin: 0,0,50,50
         bold: True
+        font_name: 'Gotham Rounded'
 
     TextInput:
         id: username
@@ -49,8 +59,9 @@
         multiline: False
         write_tab: False
 
-    Button:
-        text: "Register"
+    RoundedButton:
+        text: "[color=FAA1AF]" + "Register" + "[/color]"
+        markup: True
         on_release:
 
             app.root.current = "login_screen" if root.register() else "register_screen"
@@ -62,8 +73,9 @@
             username.text = ""
             password.text = ""
 
-    Button:
-        text: "Go back"
+    RoundedButton:
+        text: "[color=FAA1AF]" + "Go back" + "[/color]"
+        markup: True
         on_release:
 
             app.root.current = "login_screen"
