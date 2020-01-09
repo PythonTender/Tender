@@ -1,12 +1,11 @@
 #:import ImageButton Controller.ImageButton
 
 <WishListItem@BoxLayout>:
-
     image: image
     lb_model_year: lb_model_year
     orientation: 'horizontal'
     spacing: 5
-    canvas:
+    canvas.before:
         Color:
             rgb: (249/256,249/256,249/256)
         Rectangle:
@@ -17,7 +16,7 @@
         size_hint: 0.5,1
         ImageButton:
             size_hint: 0.8,1
-            pos_hint: {'x':0.0, 'center_y': 0.5}
+            pos_hint: {'x':0.05, 'center_y': 0.5}
             id: image
             canvas.before:
                 Color:

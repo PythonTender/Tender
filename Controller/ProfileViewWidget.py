@@ -11,10 +11,10 @@ class ProfileViewWidget(BoxLayout):
 
     def __init__(self, **kwargs):
         super(ProfileViewWidget, self).__init__(**kwargs)
-        self.Post = kwargs.get('post',None)
+        self.Post = kwargs.get('post', None)
         self.bind(Post=self.refresh)
 
-    def refresh(self,instance, value):
+    def refresh(self, instance, value):
         self.image.texture = self.Post.image.texture
         self.lb_model_year.text = '[b]' + str(self.Post.model) + '[/b]' + ', [size=22]' + str(self.Post.year) + '[/size]'
 
